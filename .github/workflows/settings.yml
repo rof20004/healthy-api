@@ -1,0 +1,24 @@
+name: Build Settings
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  Pipeline_Dev:
+    if: github.ref == 'refs/heads/main'
+    uses: rof20004/healthy-api/.github/workflows/deployment.yml@main
+    with:
+      environment_value: 'dev'
+      aws_region: 'sa-east-1'
+      ecr_repository: 'healthy-api-dev'
+      ecs_service: 'healthy-api'
+      ecs_cluster: 'healthy-dev'
+      task_definition_family: 'healthy-api-dev'
+      container_name: 'healthy-api'
+      environment_name: 'DEVELOPMENT'
+      work_dir: './infrastructure/iac/terraform/aws'
+    secrets:
+      aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
