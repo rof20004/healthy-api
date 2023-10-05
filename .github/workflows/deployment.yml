@@ -131,7 +131,7 @@ jobs:
 
       - name: Unit test
         run: |
-          go test -v ./tests/unit -cover -coverpkg=./application/domains/user/services/... -coverprofile=coverage.out
+          go test -v ./tests/unit -cover -coverpkg=./application/domains/paciente/services/... -coverprofile=coverage.out
 
       - name: Login to Amazon ECR
         id: login-ecr
