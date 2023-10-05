@@ -18,7 +18,7 @@ type Profissional struct {
 	Email     valueobjects.Email `json:"email"`
 	Foto      string             `json:"foto"`
 	CRP       string             `json:"crp"`
-	Senha     valueobjects.Senha `json:"senha"`
+	Senha     valueobjects.Senha `json:"-"`
 }
 
 func NewProfissional(nome, cpf, foto, crp string, email valueobjects.Email, senha valueobjects.Senha) Profissional {

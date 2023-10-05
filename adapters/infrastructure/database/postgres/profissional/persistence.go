@@ -39,7 +39,7 @@ func (p PostgreSQLProfissionalPersistenceAdapter) SaveProfissional(profissional 
 }
 
 func (p PostgreSQLProfissionalPersistenceAdapter) FindAll() ([]profissionalEntities.Profissional, error) {
-	dml := `SELECT id, nome, cpf, email, foto, crp, senha, created_at FROM profissionais`
+	dml := `SELECT id, nome, cpf, email, foto, crp, created_at FROM profissionais`
 
 	var (
 		id        sql.NullString
@@ -48,7 +48,6 @@ func (p PostgreSQLProfissionalPersistenceAdapter) FindAll() ([]profissionalEntit
 		email     sql.NullString
 		foto      sql.NullString
 		crp       sql.NullString
-		senha     sql.NullString
 		createdAt sql.NullTime
 	)
 
@@ -64,7 +63,7 @@ func (p PostgreSQLProfissionalPersistenceAdapter) FindAll() ([]profissionalEntit
 	}
 
 	for rows.Next() {
-		if err := rows.Scan(&id, &nome, &cpf, &email, &foto, &crp, &senha, &createdAt); err != nil {
+		if err := rows.Scan(&id, &nome, &cpf, &email, &foto, &crp, &createdAt); err != nil {
 			return profissionais, err
 		}
 
@@ -75,7 +74,6 @@ func (p PostgreSQLProfissionalPersistenceAdapter) FindAll() ([]profissionalEntit
 			Email:     valueobjects.NewEmail(email.String),
 			Foto:      foto.String,
 			CRP:       crp.String,
-			Senha:     valueobjects.ValueOf(senha.String),
 			CreatedAt: createdAt.Time,
 		}
 

@@ -1,0 +1,118 @@
+basePath: /
+definitions:
+  consulta.CreateConsultaRequest:
+    properties:
+      data:
+        format: 01/02/2003 14:00
+        type: string
+      pacienteId:
+        type: string
+      profissionalId:
+        type: string
+    type: object
+  paciente.CreatePacienteRequest:
+    properties:
+      avatar:
+        type: string
+      idade:
+        type: integer
+      nome:
+        type: string
+    type: object
+info:
+  contact:
+    email: rof20004@gmail.com
+    name: Rodolfo do Nascimento Azevedo
+  description: Sistema de agendamento de consultas médicas para a prefeitura de Embu-Guaçu
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Ajuda API
+  version: 1.0.0
+paths:
+  /consultas:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Informações do paciente, do profissional e a data da consulta
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/consulta.CreateConsultaRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+        "500":
+          description: Internal Server Error
+      summary: Cria uma consulta para um paciente
+      tags:
+      - Consulta
+  /pacientes:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Informações do paciente
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/paciente.CreatePacienteRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+        "400":
+          description: Bad Request
+        "500":
+          description: Internal Server Error
+      summary: Cria um novo paciente
+      tags:
+      - Paciente
+  /profissionais:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+        "500":
+          description: Internal Server Error
+      summary: Retorna a lista de todos os profissionais
+      tags:
+      - Profissional
+  /profissional-agendas/profissionais/{profissionalId}:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Id do profissional
+        in: path
+        name: profissionalId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+        "500":
+          description: Internal Server Error
+      summary: Retorna a agenda do profissional pelo id
+      tags:
+      - Profissional Agenda
+swagger: "2.0"

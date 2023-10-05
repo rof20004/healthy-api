@@ -17,6 +17,15 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/recover"
 )
 
+// @title Ajuda API
+// @version 1.0.0
+// @description Sistema de agendamento de consultas médicas para a prefeitura de Embu-Guaçu
+// @termsOfService http://swagger.io/terms/
+// @contact.name Rodolfo do Nascimento Azevedo
+// @contact.email rof20004@gmail.com
+// @license.name Apache 2.0
+// @license.url http://www.apache.org/licenses/LICENSE-2.0.html
+// @BasePath /
 func main() {
 	app := fiber.New()
 	app.Use(recover.New())

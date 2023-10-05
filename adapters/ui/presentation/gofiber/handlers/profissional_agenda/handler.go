@@ -44,6 +44,15 @@ func create(c *fiber.Ctx) error {
 	return handlers.SendResponse(c, profissionalAgenda, fiber.StatusCreated, nil)
 }
 
+// @Tags		Profissional Agenda
+// @Summary		Retorna a agenda do profissional pelo id
+// @Accept		json
+// @Produce		json
+// @Param       profissionalId path string true "Id do profissional"
+// @Success		200
+// @Failure		400
+// @Failure		500
+// @Router		/profissional-agendas/profissionais/{profissionalId} [get]
 func getAll(c *fiber.Ctx) error {
 	profissionalAgenda, err := getAllProfissionalAgendasInputPort.GetAllProfissionalAgendasByProfissionalId(c.Params("profissionalId"))
 	if err != nil {

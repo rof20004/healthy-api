@@ -29,6 +29,15 @@ func InitConsultaRoutes(app *fiber.App) {
 	app.Get("/consultas", getAll)
 }
 
+// @Tags		Consulta
+// @Summary		Cria uma consulta para um paciente
+// @Accept		json
+// @Produce		json
+// @Param		data body CreateConsultaRequest true "Informações do paciente, do profissional e a data da consulta"
+// @Success		200
+// @Failure		400
+// @Failure		500
+// @Router		/consultas [post]
 func create(c *fiber.Ctx) error {
 	var payload CreateConsultaRequest
 	if err := c.BodyParser(&payload); err != nil {

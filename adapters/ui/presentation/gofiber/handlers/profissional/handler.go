@@ -44,6 +44,14 @@ func create(c *fiber.Ctx) error {
 	return handlers.SendResponse(c, profissional, fiber.StatusCreated, nil)
 }
 
+// @Tags		Profissional
+// @Summary		Retorna a lista de todos os profissionais
+// @Accept		json
+// @Produce		json
+// @Success		200
+// @Failure		400
+// @Failure		500
+// @Router		/profissionais [get]
 func getAll(c *fiber.Ctx) error {
 	profissionais, err := getAllProfissionaisInputPort.GetAllProfissionais()
 	if err != nil {

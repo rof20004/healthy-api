@@ -29,6 +29,15 @@ func InitPacienteRoutes(app *fiber.App) {
 	app.Get("/pacientes", getAll)
 }
 
+// @Tags		Paciente
+// @Summary		Cria um novo paciente
+// @Accept		json
+// @Produce		json
+// @Param		data body CreatePacienteRequest true "Informações do paciente"
+// @Success		201
+// @Failure		400
+// @Failure		500
+// @Router		/pacientes [post]
 func create(c *fiber.Ctx) error {
 	var payload CreatePacienteRequest
 	if err := c.BodyParser(&payload); err != nil {
