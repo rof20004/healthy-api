@@ -6,6 +6,7 @@ export DATABASE_PORT=5432
 export DATABASE_USER=postgres
 export DATABASE_PASS=postgres
 export DATABASE_NAME=postgres
+export ENV=local
 
 # Remove old containers
 docker container stop app-db

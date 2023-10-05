@@ -3,6 +3,7 @@ set DATABASE_PORT=5432
 set DATABASE_USER=postgres
 set DATABASE_PASS=postgres
 set DATABASE_NAME=postgres
+set ENV=local
 
 docker container stop app-db
 

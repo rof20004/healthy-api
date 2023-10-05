@@ -26,7 +26,7 @@ func init() {
 
 func InitProfissionalAgendaRoutes(app *fiber.App) {
 	app.Post("/profissional-agendas", create)
-	app.Get("/profissional-agendas", getAll)
+	app.Get("/profissional-agendas/profissionais/:profissionalId", getAll)
 }
 
 func create(c *fiber.Ctx) error {
@@ -45,7 +45,7 @@ func create(c *fiber.Ctx) error {
 }
 
 func getAll(c *fiber.Ctx) error {
-	profissionalAgenda, err := getAllProfissionalAgendasInputPort.GetAllProfissionalAgendas()
+	profissionalAgenda, err := getAllProfissionalAgendasInputPort.GetAllProfissionalAgendasByProfissionalId(c.Params("profissionalId"))
 	if err != nil {
 		return handlers.SendResponse(c, nil, fiber.StatusBadRequest, err)
 	}

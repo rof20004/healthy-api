@@ -21,6 +21,10 @@ func init() {
 		connStr = fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s", host, port, user, pass, dbname)
 	)
 
+	if os.Getenv("ENV") == "local" {
+		connStr = fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", host, port, user, pass, dbname)
+	}
+
 	db, err := sql.Open("postgres", connStr)
 	if err != nil {
 		log.Fatalf("error while opening '%s' postgresql database: %s\n", dbname, err.Error())

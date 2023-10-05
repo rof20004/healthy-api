@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"errors"
 
+	profissionalAgendaDtos "github.com/rof20004/healthy-api/application/domains/profissional_agenda/dtos"
 	profissionalAgendaEntities "github.com/rof20004/healthy-api/application/domains/profissional_agenda/entities"
 	profissionalAgendaErrors "github.com/rof20004/healthy-api/application/domains/profissional_agenda/errors"
 )
@@ -67,6 +68,70 @@ func (p PostgreSQLProfissionalAgendaPersistenceAdapter) FindAll() ([]profissiona
 		}
 
 		profissionalAgendas = append(profissionalAgendas, profissionalAgenda)
+	}
+
+	return profissionalAgendas, nil
+}
+
+func (p PostgreSQLProfissionalAgendaPersistenceAdapter) FindAllByProfissionalId(profissionalId string) (profissionalAgendaDtos.AgendaDto, error) {
+	dml := `SELECT DISTINCT
+    				p.nome,
+    				p.cpf,
+    				p.email,
+    				p.foto,
+    				p.crp,
+    				pa.data, 
+    				pa.created_at 
+			FROM profissional_agenda pa
+			INNER JOIN profissionais p ON p.id = pa.profissional_id
+			WHERE p.id = $1
+			ORDER BY pa.data ASC`
+
+	var (
+		profissionalNome  sql.NullString
+		profissionalCPF   sql.NullString
+		profissionalEmail sql.NullString
+		profissionalFoto  sql.NullString
+		profissionalCRP   sql.NullString
+		data              sql.NullTime
+		createdAt         sql.NullTime
+	)
+
+	var profissionalAgendas profissionalAgendaDtos.AgendaDto
+
+	rows, err := p.db.Query(dml, profissionalId)
+	if err != nil {
+		if errors.Is(err, sql.ErrNoRows) {
+			return profissionalAgendas, profissionalAgendaErrors.ErrProfissionalAgendasNaoEncontradas.WithRootCause(err)
+		}
+
+		return profissionalAgendas, err
+	}
+
+	for rows.Next() {
+		if err := rows.Scan(&profissionalNome, &profissionalCPF, &profissionalEmail, &profissionalFoto, &profissionalCRP, &data, &createdAt); err != nil {
+			return profissionalAgendas, err
+		}
+
+		if profissionalAgendas.Profissional.Nome == "" {
+			profissionalAgendas.Profissional = profissionalAgendaDtos.ProfissionalDto{
+				Id:    profissionalId,
+				Nome:  profissionalNome.String,
+				CPF:   profissionalCPF.String,
+				Email: profissionalEmail.String,
+				Foto:  profissionalFoto.String,
+				CRP:   profissionalCRP.String,
+			}
+		}
+
+		if len(profissionalAgendas.Datas) == 0 {
+			profissionalAgendas.Datas = make([]profissionalAgendaDtos.DataDto, 0)
+		}
+
+		profissionalAgendas.Datas = append(profissionalAgendas.Datas, profissionalAgendaDtos.DataDto{
+			Dia:  data.Time.Format("02/01/2006"),
+			Hora: data.Time.Format("15:04"),
+		})
 	}
 
 	return profissionalAgendas, nil
