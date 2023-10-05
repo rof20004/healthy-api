@@ -18,7 +18,7 @@ jobs:
       task_definition_family: 'healthy-api-dev'
       container_name: 'healthy-api'
       environment_name: 'DEVELOPMENT'
-      work_dir: './infrastructure/iac/terraform/aws'
+      work_dir: './adapters/infrastructure/iac/terraform/aws'
     secrets:
       aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
       aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
