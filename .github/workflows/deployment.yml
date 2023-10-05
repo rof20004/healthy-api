@@ -170,3 +170,14 @@ jobs:
           service: ${{ inputs.ecs_service }}
           cluster: ${{ inputs.ecs_cluster }}
           wait-for-service-stability: false
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
+        with:
+          username: ${{ secrets.docker_username }}
+          password: ${{ secrets.docker_password }}
+
+      - name: Publish to Docker Hub
+        run: |
+          docker build -t ${{ secrets.docker_username }}/${{ inputs.container_name }} .
+          docker push ${{ secrets.docker_username }}/${{ inputs.container_name }}

@@ -1,0 +1,37 @@
+version: "3.7"
+
+services:
+  api:
+    image: rof20004/healthy-api
+    container_name: healthy-api
+    ports:
+      - "8080:8080"
+    environment:
+      - DATABASE_HOST=127.0.0.1
+      - DATABASE_PORT=5432
+      - DATABASE_USER=postgres
+      - DATABASE_PASS=postgres
+      - DATABASE_NAME=postgres
+      - ENV=local
+    depends_on:
+      - db
+    networks:
+      - healthy-network
+
+  db:
+    image: postgres:15
+    container_name: healthy-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    volumes:
+      - healthy-db:/var/lib/postgresql/data/
+    networks:
+      - healthy-network
+
+volumes:
+  healthy-db:
+
+networks:
+  healthy-network:
