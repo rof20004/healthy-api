@@ -12,11 +12,11 @@ jobs:
     with:
       environment_value: 'dev'
       aws_region: 'sa-east-1'
-      ecr_repository: 'healthy-api-dev'
-      ecs_service: 'healthy-api'
-      ecs_cluster: 'healthy-dev'
-      task_definition_family: 'healthy-api-dev'
-      container_name: 'healthy-api'
+      ecr_repository: 'ajuda-api-dev'
+      ecs_service: 'ajuda-api'
+      ecs_cluster: 'ajuda-dev'
+      task_definition_family: 'ajuda-api-dev'
+      container_name: 'ajuda-api'
       environment_name: 'DEVELOPMENT'
       work_dir: './iac/terraform/aws'
     secrets:

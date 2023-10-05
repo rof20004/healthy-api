@@ -17,9 +17,9 @@ variable "deploy_user_arn" {
 }
 
 variable "domain_name" {
-  description = "Healthy domain name"
+  description = "Ajuda domain name"
   type        = string
-  default     = "healthy.com"
+  default     = "ajuda.academy"
 }
 
 variable "application_domain_name" {
@@ -40,9 +40,9 @@ variable "default_subnets_ids" {
 }
 
 variable "route53_zone_id" {
-  description = "Zone Id for Snack Prompt on Route53"
+  description = "Zone Id for Ajuda on Route53"
   type        = string
-  default     = "Z00518753IRBNY8BUIIBD"
+  default     = "Z071451172ANOXED8ZXY"
 }
 
 variable "log_group_name" {

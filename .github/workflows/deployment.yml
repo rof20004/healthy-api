@@ -11,32 +11,32 @@ on:
       aws_region:
         description: 'AWS region'
         required: true
-        default: 'us-east-2'
+        default: 'sa-east-1'
         type: string
       ecr_repository:
         description: 'ECR repository'
         required: true
-        default: 'sp-marketplace-ms-dev'
+        default: 'ajuda-api-dev'
         type: string
       ecs_service:
         description: 'ECS service'
         required: true
-        default: 'sp-marketplace-ms-service'
+        default: 'ajuda-api-service'
         type: string
       ecs_cluster:
         description: 'ECS cluster'
         required: true
-        default: 'snack-prompt-dev'
+        default: 'ajuda-dev'
         type: string
       task_definition_family:
         description: 'Task definition family'
         required: true
-        default: 'sp-marketplace-ms-dev'
+        default: 'ajuda-api-dev'
         type: string
       container_name:
         description: 'Container name'
         required: true
-        default: 'sp-marketplace-ms'
+        default: 'ajuda-api'
         type: string
       environment_name:
         description: 'Environment name'
@@ -46,7 +46,7 @@ on:
       work_dir:
         description: 'Work directory'
         required: true
-        default: './infra/aws/terraform'
+        default: './iac/terraform/terraform/aws'
         type: string
     secrets:
       aws_access_key_id:
