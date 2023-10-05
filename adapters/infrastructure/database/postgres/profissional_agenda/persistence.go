@@ -17,7 +17,7 @@ func NewPostgreSQLProfissionalAgendaPersistenceAdapter(db *sql.DB) PostgreSQLPro
 }
 
 func (p PostgreSQLProfissionalAgendaPersistenceAdapter) SaveProfissionalAgenda(profissionalAgenda profissionalAgendaEntities.ProfissionalAgenda) error {
-	dml := "INSERT INTO profissionais(id, profissional_id, data, created_at) VALUES($1, $2, $3, $4)"
+	dml := "INSERT INTO profissional_agenda(id, profissional_id, data, created_at) VALUES($1, $2, $3, $4)"
 
 	var (
 		id             = profissionalAgenda.Id
@@ -34,7 +34,7 @@ func (p PostgreSQLProfissionalAgendaPersistenceAdapter) SaveProfissionalAgenda(p
 }
 
 func (p PostgreSQLProfissionalAgendaPersistenceAdapter) FindAll() ([]profissionalAgendaEntities.ProfissionalAgenda, error) {
-	dml := `SELECT id, profissional_id, data, created_at FROM profissionalAgendas`
+	dml := `SELECT id, profissional_id, data, created_at FROM profissional_agenda`
 
 	var (
 		id             sql.NullString
