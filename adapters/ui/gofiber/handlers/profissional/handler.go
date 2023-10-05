@@ -1,9 +1,9 @@
 package profissional
 
 import (
-	"github.com/rof20004/healthy-api/adapters/infrastructure/database/postgres"
-	profissionalPostgreSQLPersistenceAdapter "github.com/rof20004/healthy-api/adapters/infrastructure/database/postgres/profissional"
-	"github.com/rof20004/healthy-api/adapters/ui/presentation/gofiber/handlers"
+	"github.com/rof20004/healthy-api/adapters/database/postgres"
+	profissionalPostgreSQLPersistenceAdapter "github.com/rof20004/healthy-api/adapters/database/postgres/profissional"
+	"github.com/rof20004/healthy-api/adapters/ui/gofiber/handlers"
 	profissionalInputPort "github.com/rof20004/healthy-api/application/domains/profissional/ports/input"
 	profissionalServices "github.com/rof20004/healthy-api/application/domains/profissional/services"
 

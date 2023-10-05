@@ -1,9 +1,9 @@
 package profissional_agenda
 
 import (
-	"github.com/rof20004/healthy-api/adapters/infrastructure/database/postgres"
-	profissionalAgendaPostgreSQLPersistenceAdapter "github.com/rof20004/healthy-api/adapters/infrastructure/database/postgres/profissional_agenda"
-	"github.com/rof20004/healthy-api/adapters/ui/presentation/gofiber/handlers"
+	"github.com/rof20004/healthy-api/adapters/database/postgres"
+	profissionalAgendaPostgreSQLPersistenceAdapter "github.com/rof20004/healthy-api/adapters/database/postgres/profissional_agenda"
+	"github.com/rof20004/healthy-api/adapters/ui/gofiber/handlers"
 	profissionalAgendaInputPort "github.com/rof20004/healthy-api/application/domains/profissional_agenda/ports/input"
 	profissionalAgendaServices "github.com/rof20004/healthy-api/application/domains/profissional_agenda/services"
 

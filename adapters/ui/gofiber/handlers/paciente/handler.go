@@ -1,9 +1,9 @@
 package paciente
 
 import (
-	"github.com/rof20004/healthy-api/adapters/infrastructure/database/postgres"
-	pacientePostgreSQLPersistenceAdapter "github.com/rof20004/healthy-api/adapters/infrastructure/database/postgres/paciente"
-	"github.com/rof20004/healthy-api/adapters/ui/presentation/gofiber/handlers"
+	"github.com/rof20004/healthy-api/adapters/database/postgres"
+	pacientePostgreSQLPersistenceAdapter "github.com/rof20004/healthy-api/adapters/database/postgres/paciente"
+	"github.com/rof20004/healthy-api/adapters/ui/gofiber/handlers"
 	pacienteInputPort "github.com/rof20004/healthy-api/application/domains/paciente/ports/input"
 	pacienteServices "github.com/rof20004/healthy-api/application/domains/paciente/services"
 

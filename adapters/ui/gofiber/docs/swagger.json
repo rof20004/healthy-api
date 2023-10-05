@@ -14,7 +14,7 @@
         },
         "version": "1.0.0"
     },
-    "host": "api.ajuda.academy",
+    "host": "localhost:8080",
     "basePath": "/",
     "paths": {
         "/consultas": {

@@ -19,7 +19,7 @@ definitions:
       nome:
         type: string
     type: object
-host: api.ajuda.academy
+host: localhost:8080
 info:
   contact:
     email: rof20004@gmail.com

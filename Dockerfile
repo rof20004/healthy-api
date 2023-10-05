@@ -9,7 +9,7 @@ RUN go mod download
 
 COPY . .
 
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-s -w" -o app-binary adapters/ui/presentation/gofiber/*.go
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-s -w" -o app-binary adapters/ui/gofiber/*.go
 
 FROM gcr.io/distroless/static-debian11
 

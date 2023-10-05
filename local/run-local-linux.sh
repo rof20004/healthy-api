@@ -17,4 +17,4 @@ docker container run -d -p 5432:5432 --rm --name app-db -e POSTGRES_USER=postgre
 # Waiting containers start
 sleep 1
 
-go run adapters/ui/presentation/gofiber/*.go
+go run adapters/ui/gofiber/*.go

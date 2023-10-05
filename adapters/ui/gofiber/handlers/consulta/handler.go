@@ -1,9 +1,9 @@
 package consulta
 
 import (
-	"github.com/rof20004/healthy-api/adapters/infrastructure/database/postgres"
-	consultaPostgreSQLPersistenceAdapter "github.com/rof20004/healthy-api/adapters/infrastructure/database/postgres/consulta"
-	"github.com/rof20004/healthy-api/adapters/ui/presentation/gofiber/handlers"
+	"github.com/rof20004/healthy-api/adapters/database/postgres"
+	consultaPostgreSQLPersistenceAdapter "github.com/rof20004/healthy-api/adapters/database/postgres/consulta"
+	"github.com/rof20004/healthy-api/adapters/ui/gofiber/handlers"
 	consultaInputPort "github.com/rof20004/healthy-api/application/domains/consulta/ports/input"
 	consultaServices "github.com/rof20004/healthy-api/application/domains/consulta/services"
 

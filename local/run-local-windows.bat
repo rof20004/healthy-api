@@ -11,4 +11,4 @@ docker container run -d -p 5432:5432 --name app-db -e POSTGRES_USER=postgres -e 
 
 timeout 1
 
-go run adapters/ui/presentation/gofiber/*.go
+go run adapters/ui/gofiber/*.go

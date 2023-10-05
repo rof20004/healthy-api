@@ -1,11 +1,12 @@
 package app
 
 import (
-	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/swagger"
 	"os"
 
-	_ "github.com/rof20004/healthy-api/adapters/ui/presentation/gofiber/docs"
+	_ "github.com/rof20004/healthy-api/adapters/ui/gofiber/docs"
+
+	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/swagger"
 )
 
 func InitAppRoutes(app *fiber.App) {
