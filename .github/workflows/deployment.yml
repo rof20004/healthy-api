@@ -185,5 +185,5 @@ jobs:
 
       - name: Publish to Docker Hub
         run: |
-          docker build -t ${{ secrets.docker_username }}/${{ inputs.container_name }} .
+          docker buildx build --platform linux/arm64,linux/amd64 -t ${{ secrets.docker_username }}/${{ inputs.container_name }} .
           docker push ${{ secrets.docker_username }}/${{ inputs.container_name }}
