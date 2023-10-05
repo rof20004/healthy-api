@@ -16,6 +16,6 @@ func (c CreateConsultaRequest) ToEntity() consultaEntities.Consulta {
 	if err != nil {
 		panic(err)
 	}
-	
+
 	return consultaEntities.NewConsulta(c.PacienteId, c.ProfissionalId, data)
 }
