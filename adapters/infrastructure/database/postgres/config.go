@@ -18,7 +18,7 @@ func init() {
 		user    = os.Getenv("DATABASE_USER")
 		pass    = os.Getenv("DATABASE_PASS")
 		dbname  = os.Getenv("DATABASE_NAME")
-		connStr = fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", host, port, user, pass, dbname)
+		connStr = fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s", host, port, user, pass, dbname)
 	)
 
 	db, err := sql.Open("postgres", connStr)
