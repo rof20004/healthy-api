@@ -55,6 +55,12 @@ on:
       aws_secret_access_key:
         description: 'AWS secret access key'
         required: true
+      docker_username:
+        description: 'Docker username'
+        required: true
+      docker_password:
+        description: 'Docker password'
+        required: true
 
 jobs:
   provision-build-deploy:
