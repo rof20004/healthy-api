@@ -17,17 +17,18 @@ func NewPostgreSQLConsultaPersistenceAdapter(db *sql.DB) PostgreSQLConsultaPersi
 }
 
 func (p PostgreSQLConsultaPersistenceAdapter) SaveConsulta(consulta consultaEntities.Consulta) error {
-	dml := "INSERT INTO consultas(id, paciente_id, profissional_id, data, created_at) VALUES($1, $2, $3, $4, $5)"
+	dml := "INSERT INTO consultas(id, paciente_id, profissional_id, data, link, created_at) VALUES($1, $2, $3, $4, $5, $6)"
 
 	var (
 		id             = consulta.Id
 		pacienteId     = consulta.PacienteId
 		profissionalId = consulta.ProfissionalId
 		data           = consulta.Data
+		link           = consulta.Link
 		createdAt      = consulta.CreatedAt
 	)
 
-	if _, err := p.db.Exec(dml, id, pacienteId, profissionalId, data, createdAt); err != nil {
+	if _, err := p.db.Exec(dml, id, pacienteId, profissionalId, data, link, createdAt); err != nil {
 		return err
 	}
 
@@ -35,12 +36,13 @@ func (p PostgreSQLConsultaPersistenceAdapter) SaveConsulta(consulta consultaEnti
 }
 
 func (p PostgreSQLConsultaPersistenceAdapter) FindAllByPacienteId(pacienteId string) ([]consultaEntities.Consulta, error) {
-	dml := `SELECT id, profissional_id, data, created_at FROM consultas WHERE paciente_id = $1`
+	dml := `SELECT id, profissional_id, data, link, created_at FROM consultas WHERE paciente_id = $1`
 
 	var (
 		id             sql.NullString
 		profissionalId sql.NullString
 		data           sql.NullTime
+		link           sql.NullString
 		createdAt      sql.NullTime
 	)
 
@@ -56,7 +58,7 @@ func (p PostgreSQLConsultaPersistenceAdapter) FindAllByPacienteId(pacienteId str
 	}
 
 	for rows.Next() {
-		if err := rows.Scan(&id, &profissionalId, &data, &createdAt); err != nil {
+		if err := rows.Scan(&id, &profissionalId, &data, &link, &createdAt); err != nil {
 			return consultas, err
 		}
 
@@ -65,6 +67,7 @@ func (p PostgreSQLConsultaPersistenceAdapter) FindAllByPacienteId(pacienteId str
 			PacienteId:     pacienteId,
 			ProfissionalId: profissionalId.String,
 			Data:           data.Time,
+			Link:           link.String,
 			CreatedAt:      createdAt.Time,
 		}
 

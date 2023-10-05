@@ -15,6 +15,7 @@ type Consulta struct {
 	PacienteId     string    `json:"pacienteId"`
 	ProfissionalId string    `json:"profissionalId"`
 	Data           time.Time `json:"data"`
+	Link           string    `json:"link"`
 }
 
 func NewConsulta(pacienteId, profissionalId string, data time.Time) Consulta {
@@ -24,6 +25,7 @@ func NewConsulta(pacienteId, profissionalId string, data time.Time) Consulta {
 		ProfissionalId: profissionalId,
 		Data:           data,
 		CreatedAt:      time.Now(),
+		Link:           "http://meet.google.com/new",
 	}
 }
 
