@@ -19,6 +19,7 @@ definitions:
       nome:
         type: string
     type: object
+host: api.ajuda.academy
 info:
   contact:
     email: rof20004@gmail.com

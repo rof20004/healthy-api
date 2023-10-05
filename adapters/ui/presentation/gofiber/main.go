@@ -25,6 +25,7 @@ import (
 // @contact.email rof20004@gmail.com
 // @license.name Apache 2.0
 // @license.url http://www.apache.org/licenses/LICENSE-2.0.html
+// @host api.ajuda.academy
 // @BasePath /
 func main() {
 	app := fiber.New()
