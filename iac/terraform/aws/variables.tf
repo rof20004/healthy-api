@@ -178,11 +178,6 @@ variable "rds_db_user" {
   type        = string
 }
 
-variable "rds_db_subnet_group_name" {
-  description = "RDS database subnet group name"
-  type        = string
-}
-
 variable "rds_db_sg_name" {
   description = "RDS database security group name"
   type        = string

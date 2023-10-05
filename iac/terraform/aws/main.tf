@@ -12,7 +12,7 @@ resource "aws_db_instance" "this" {
   username                     = var.rds_db_user
   password                     = random_password.rds_db_pass.result
   vpc_security_group_ids       = [aws_security_group.rds.id]
-  db_subnet_group_name         = var.rds_db_subnet_group_name
+  db_subnet_group_name         = var.rds_default_subnet_group_name
   engine                       = "postgres"
   multi_az                     = false
   publicly_accessible          = true

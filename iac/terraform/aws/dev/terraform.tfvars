@@ -23,6 +23,5 @@ rds_default_subnet_group_name       = "default-vpc-312e0c58"
 rds_db_instance_class               = "db.t4g.micro"
 rds_db_port                         = 5432
 rds_db_user                         = "postgres"
-rds_db_subnet_group_name            = "ajuda-api-dev"
 rds_db_sg_name                      = "ajuda-api-rds-sg-dev"
 rds_db_secret_name                  = "dev/AjudaApiDbSecret"

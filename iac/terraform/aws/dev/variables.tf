@@ -66,8 +66,6 @@ variable "rds_db_port" {}
 
 variable "rds_db_user" {}
 
-variable "rds_db_subnet_group_name" {}
-
 variable "rds_db_sg_name" {}
 
 variable "rds_db_secret_name" {}
