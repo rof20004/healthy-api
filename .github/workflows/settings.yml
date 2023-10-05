@@ -13,7 +13,7 @@ jobs:
       environment_value: 'dev'
       aws_region: 'sa-east-1'
       ecr_repository: 'ajuda-api-dev'
-      ecs_service: 'ajuda-api'
+      ecs_service: 'ajuda-api-service'
       ecs_cluster: 'ajuda-dev'
       task_definition_family: 'ajuda-api-dev'
       container_name: 'ajuda-api'
