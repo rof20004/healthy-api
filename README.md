@@ -18,7 +18,11 @@ Esse é o back-end do app Ajuda, uma aplicação para atendimento médico online
 
 ![infraestrutura](infra.png)
 
-## Como utilizar?
+## Como utilizar localmente para testes após execução da pipeline?
+
+`docker-compose up -d`
+
+## Como utilizar localmente para desenvolvimento?
 
 1. Você precisa ter o Go instalado e configurado na sua máquina
 2. Você precisa do Docker instalado na sua máquina e em execução
