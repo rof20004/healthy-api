@@ -60,6 +60,26 @@ const docTemplate = `{
             }
         },
         "/pacientes": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Paciente"
+                ],
+                "summary": "Retorna a lista de pacientes",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            },
             "post": {
                 "consumes": [
                     "application/json"
