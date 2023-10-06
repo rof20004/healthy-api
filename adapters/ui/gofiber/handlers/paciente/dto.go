@@ -4,7 +4,7 @@ import pacienteEntities "github.com/rof20004/healthy-api/application/domains/pac
 
 type CreatePacienteRequest struct {
 	Nome   string `json:"nome"`
-	Avatar string `json:"avatar"`
+	Avatar string `json:"avatar" format:"image base64"`
 	Idade  int64  `json:"idade"`
 }
 

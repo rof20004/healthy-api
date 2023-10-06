@@ -53,6 +53,13 @@ func create(c *fiber.Ctx) error {
 	return handlers.SendResponse(c, consulta, fiber.StatusCreated, nil)
 }
 
+// @Tags		Consulta
+// @Summary		Retorna a lista de consultas de todos os pacientes
+// @Produce		json
+// @Success		200
+// @Failure		400
+// @Failure		500
+// @Router		/consultas [get]
 func getAll(c *fiber.Ctx) error {
 	consultas, err := getAllConsultasInputPort.GetAllConsultasByPacienteId(c.Query("pacienteId"))
 	if err != nil {

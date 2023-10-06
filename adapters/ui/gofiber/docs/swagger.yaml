@@ -32,6 +32,19 @@ info:
   version: 1.0.0
 paths:
   /consultas:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+        "500":
+          description: Internal Server Error
+      summary: Retorna a lista de consultas de todos os pacientes
+      tags:
+      - Consulta
     post:
       consumes:
       - application/json

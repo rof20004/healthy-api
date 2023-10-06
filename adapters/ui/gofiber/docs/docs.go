@@ -24,6 +24,26 @@ const docTemplate = `{
     "basePath": "{{.BasePath}}",
     "paths": {
         "/consultas": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Consulta"
+                ],
+                "summary": "Retorna a lista de consultas de todos os pacientes",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            },
             "post": {
                 "consumes": [
                     "application/json"

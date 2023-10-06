@@ -186,5 +186,4 @@ jobs:
       - name: Publish to Docker Hub
         run: |
           docker buildx create --driver=docker-container --use
-          docker buildx build --platform linux/amd64,linux/arm/v7,linux/arm64/v8,linux/arm64 --push -t rof20004/ajuda-api:latest .
-          docker push rof20004/ajuda-api
+          docker buildx build --platform=linux/amd64,linux/arm64,linux/arm/v7 -t rof20004/ajuda-api:latest --push .
