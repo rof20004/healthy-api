@@ -185,6 +185,6 @@ jobs:
 
       - name: Publish to Docker Hub
         run: |
-          docker buildx create --use
+          docker buildx create --driver=docker-container --use
           ocker buildx build --platform linux/amd64,linux/arm/v7,linux/arm64/v8,linux/arm64 --push -t ${{ secrets.docker_username }}/${{ inputs.container_name }}:latest .
           docker push ${{ secrets.docker_username }}/${{ inputs.container_name }}:latest
