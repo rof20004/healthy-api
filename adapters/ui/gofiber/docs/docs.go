@@ -79,6 +79,37 @@ const docTemplate = `{
                 }
             }
         },
+        "/consultas/{pacienteId}": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Consulta"
+                ],
+                "summary": "Retorna a lista de consultas de um determinado paciente",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Id do paciente",
+                        "name": "pacienteId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
         "/pacientes": {
             "get": {
                 "produces": [
@@ -215,7 +246,8 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "avatar": {
-                    "type": "string"
+                    "type": "string",
+                    "format": "image base64"
                 },
                 "idade": {
                     "type": "integer"

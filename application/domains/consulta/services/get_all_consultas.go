@@ -13,6 +13,15 @@ func NewGetAllProfissionaisService(consultaPersistenceOutputPort outputPorts.Con
 	return GetAllConsultasService{consultaPersistenceOutputPort}
 }
 
+func (s GetAllConsultasService) GetAllConsultas() ([]entities.Consulta, error) {
+	consultas, err := s.consultaPersistenceOutputPort.FindAll()
+	if err != nil {
+		return consultas, err
+	}
+
+	return consultas, nil
+}
+
 func (s GetAllConsultasService) GetAllConsultasByPacienteId(pacienteId string) ([]entities.Consulta, error) {
 	consultas, err := s.consultaPersistenceOutputPort.FindAllByPacienteId(pacienteId)
 	if err != nil {

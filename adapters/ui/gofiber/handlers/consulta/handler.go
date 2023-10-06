@@ -27,6 +27,7 @@ func init() {
 func InitConsultaRoutes(app *fiber.App) {
 	app.Post("/consultas", create)
 	app.Get("/consultas", getAll)
+	app.Get("/consultas/:pacienteId", getAllByPaciente)
 }
 
 // @Tags		Consulta
@@ -61,7 +62,24 @@ func create(c *fiber.Ctx) error {
 // @Failure		500
 // @Router		/consultas [get]
 func getAll(c *fiber.Ctx) error {
-	consultas, err := getAllConsultasInputPort.GetAllConsultasByPacienteId(c.Query("pacienteId"))
+	consultas, err := getAllConsultasInputPort.GetAllConsultas()
+	if err != nil {
+		return handlers.SendResponse(c, nil, fiber.StatusBadRequest, err)
+	}
+
+	return handlers.SendResponse(c, consultas, fiber.StatusOK, nil)
+}
+
+// @Tags		Consulta
+// @Summary		Retorna a lista de consultas de um determinado paciente
+// @Produce		json
+// @Param		pacienteId path string true "Id do paciente"
+// @Success		200
+// @Failure		400
+// @Failure		500
+// @Router		/consultas/{pacienteId} [get]
+func getAllByPaciente(c *fiber.Ctx) error {
+	consultas, err := getAllConsultasInputPort.GetAllConsultasByPacienteId(c.Params("pacienteId"))
 	if err != nil {
 		return handlers.SendResponse(c, nil, fiber.StatusBadRequest, err)
 	}

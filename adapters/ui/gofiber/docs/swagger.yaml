@@ -13,6 +13,7 @@ definitions:
   paciente.CreatePacienteRequest:
     properties:
       avatar:
+        format: image base64
         type: string
       idade:
         type: integer
@@ -65,6 +66,26 @@ paths:
         "500":
           description: Internal Server Error
       summary: Cria uma consulta para um paciente
+      tags:
+      - Consulta
+  /consultas/{pacienteId}:
+    get:
+      parameters:
+      - description: Id do paciente
+        in: path
+        name: pacienteId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+        "500":
+          description: Internal Server Error
+      summary: Retorna a lista de consultas de um determinado paciente
       tags:
       - Consulta
   /pacientes:
